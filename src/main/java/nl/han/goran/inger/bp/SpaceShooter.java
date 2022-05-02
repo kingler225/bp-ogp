@@ -3,6 +3,7 @@ package nl.han.goran.inger.bp;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
+import nl.han.goran.inger.bp.scenes.GameScene;
 import nl.han.goran.inger.bp.scenes.StartScene;
 
 public class SpaceShooter extends YaegerGame {
@@ -20,5 +21,6 @@ public class SpaceShooter extends YaegerGame {
     public void setupScenes() {
         var startSceneFont = new CustomFont("fonts/RobotoMono-Medium.ttf", 50);
         addScene(0, new StartScene(startSceneFont, this));
+        addScene(1, new GameScene());
     }
 }
