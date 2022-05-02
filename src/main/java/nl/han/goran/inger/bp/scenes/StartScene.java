@@ -3,32 +3,24 @@ package nl.han.goran.inger.bp.scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
-import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import nl.han.goran.inger.bp.SpaceShooter;
 import nl.han.goran.inger.bp.entities.StartScreenPlayer;
 
 import java.util.Set;
 
 public class StartScene extends DynamicScene implements KeyListener {
     private CustomFont font;
-    private double xStart;
-    private double yStart;
-    private double xPlayerLocation;
-    private double yPlayerLocation;
+    private SpaceShooter spaceShooter;
 
-    public StartScene(CustomFont font) {
+    public StartScene(CustomFont font, SpaceShooter spaceShooter) {
         this.font = font;
-        this.xStart = getWidth() / 2;
-        this.yStart = getHeight() / 2;
-        this.xPlayerLocation = this.xStart - 100;
-        this.yPlayerLocation = this.yStart + 5;
+        this.spaceShooter = spaceShooter;
     }
 
     @Override
@@ -41,11 +33,13 @@ public class StartScene extends DynamicScene implements KeyListener {
     public void setupEntities() {
         var offSet = 100;
         var playerSize = new Size(80);
+        var xCenter = getWidth() / 2;
+        var yCenter = getHeight() / 2;
 
-        var textLocation = new Coordinate2D(this.xStart + offSet, yStart);
+        var textLocation = new Coordinate2D(xCenter + offSet, yCenter);
         var startGameText = new TextEntity(textLocation, "Start Game");
 
-        var player = new StartScreenPlayer(new Coordinate2D(this.xPlayerLocation, this.yPlayerLocation), playerSize);
+        var player = new StartScreenPlayer(new Coordinate2D(xCenter - 100, yCenter + 5), playerSize);
 
         startGameText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         startGameText.setFill(Color.WHITE);
@@ -59,7 +53,8 @@ public class StartScene extends DynamicScene implements KeyListener {
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> set) {
-//        if (set.contains(KeyCode.DOWN)) {
-//        }
+        if (set.contains(KeyCode.ENTER)) {
+            spaceShooter.setActiveScene(1);
+        }
     }
 }

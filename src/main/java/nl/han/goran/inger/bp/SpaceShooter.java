@@ -13,12 +13,12 @@ public class SpaceShooter extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Space Shooter");
-        setSize(new Size(800, 600));
+        setSize(new Size(1100, 700));
     }
 
     @Override
     public void setupScenes() {
         var startSceneFont = new CustomFont("fonts/RobotoMono-Medium.ttf", 50);
-        addScene(0, new StartScene(startSceneFont));
+        addScene(0, new StartScene(startSceneFont, this));
     }
 }
