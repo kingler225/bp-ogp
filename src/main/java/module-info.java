@@ -7,4 +7,6 @@ module bp.ogp {
     opens asteroids;
     opens fonts;
     opens player.sprites;
+    opens flash;
+    opens shoot;
 }
