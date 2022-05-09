@@ -18,6 +18,7 @@ public class KometenSpawner extends EntitySpawner{
 
     @Override
     protected void spawnEntities() {
+        spawn(new Kometen(randomLocation()));
 
     }
 
