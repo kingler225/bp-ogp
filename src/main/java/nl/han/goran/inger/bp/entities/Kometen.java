@@ -12,8 +12,8 @@ public class Kometen extends DynamicCircleEntity{
      *
      * @param initialLocation the initial position at which this {@link DynamicCircleEntity} should be placed
      */
-    protected Kometen(Coordinate2D initialLocation) {
-        super(initialLocation);
+    public Kometen(Coordinate2D initialLocation) {
+        super( initialLocation);
     }
 }
 
