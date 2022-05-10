@@ -12,8 +12,9 @@ import java.util.Set;
 
 public class PlayerSpaceship extends DynamicSpriteEntity implements KeyListener {
     //    TODO: gebruik de andere player sprites wanneer het ship omhoog of omlaag gaat.
-    //    FIXME: er is bug als de volgende toetsen worden ingedrukt: space + up + left
+    //    FIXME: er is een bug als de volgende toetsen worden ingedrukt: space + up + left
     final GameScene gameScene;
+    private int lives = 3;
 
     public PlayerSpaceship(Coordinate2D initialLocation, GameScene gameScene) {
         // de resource en size in deze class en de StartScreenPlayer class zijn hetzelfde...
@@ -28,7 +29,7 @@ public class PlayerSpaceship extends DynamicSpriteEntity implements KeyListener 
         gameScene.setyPlayerLocationInScene(getLocationInScene().getY());
 
         var speed = 7;
-        System.out.println(set);
+//        System.out.println(set);
         if (set.contains(KeyCode.RIGHT) && set.contains(KeyCode.UP)) {
             setMotion(speed, 135d);
             if (set.contains(KeyCode.SPACE)) {
