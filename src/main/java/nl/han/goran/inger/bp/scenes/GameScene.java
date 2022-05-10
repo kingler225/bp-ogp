@@ -7,7 +7,8 @@ import nl.han.goran.inger.bp.entities.Kometen;
 import nl.han.goran.inger.bp.entities.PlayerSpaceship;
 
 public class GameScene extends DynamicScene {
-
+    public double xPlayerLocationInScene;
+    public double yPlayerLocationInScene;
     public void setupScene() {
         setBackgroundImage("background/bg-preview-big.png", true);
     }
@@ -15,9 +16,25 @@ public class GameScene extends DynamicScene {
     public void setupEntities() {
         var groteKometen = new Kometen(new Coordinate2D(70, 430));
 
-        var playerSpaceship = new PlayerSpaceship(new Coordinate2D(0, getHeight() / 2));
+        var playerSpaceship = new PlayerSpaceship(new Coordinate2D(0, getHeight() / 2), this);
 
         addEntity(groteKometen);
         addEntity(playerSpaceship);
+    }
+
+    public double getxPlayerLocationInScene() {
+        return xPlayerLocationInScene;
+    }
+
+    public void setxPlayerLocationInScene(double xPlayerLocationInScene) {
+        this.xPlayerLocationInScene = xPlayerLocationInScene;
+    }
+
+    public void setyPlayerLocationInScene(double yPlayerLocationInScene) {
+        this.yPlayerLocationInScene = yPlayerLocationInScene;
+    }
+
+    public double getyPlayerLocationInScene() {
+        return yPlayerLocationInScene;
     }
 }
