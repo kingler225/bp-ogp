@@ -2,18 +2,27 @@ package nl.han.goran.inger.bp.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Direction;
+import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 
-public class Kometen extends DynamicCircleEntity{
+public class Kometen extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
 
-    /**
-     * Create a new {@link DynamicCircleEntity} on the given {@code initialLocation}.
-     *
-     * @param initialLocation the initial position at which this {@link DynamicCircleEntity} should be placed
-     */
-    public Kometen(Coordinate2D initialLocation) {
-        super( initialLocation);
+   public Kometen(Coordinate2D location){
+       super("asteroids/asteroid.png", location);
+       setMotion(2, 270d);
+    }
+
+    @Override
+    public void setDirection(Direction newDirection) {
+        super.setDirection(newDirection);
+    }
+
+    @Override
+    public void notifyBoundaryTouching(SceneBorder border) {
+
     }
 }
 
